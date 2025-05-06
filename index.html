@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yesel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <audio id="miAudio" hidden>
+    <source src="recursos/Musica Fondo.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+
+    <canvas id="birthday"></canvas>
+
+    <div class="container">
+        <h1>De César para Yesel</h1>
+
+        <!-- Carrusel de imágenes -->
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="1.jpg" alt="Imagen 1">
+                <img src="2.jpg" alt="Imagen 2">
+                <img src="3.jpg" alt="Imagen 3">
+                <img src="4.jpg" alt="Imagen 4">
+                <img src="5.jpg" alt="Imagen 5">
+                <img src="6.jpg" alt="Imagen 6">
+                <img src="7.jpg" alt="Imagen 7">
+                <img src="8.jpg" alt="Imagen 8">
+                <img src="9.jpg" alt="Imagen 9">
+                <img src="10.jpg" alt="Imagen 10">
+                <img src="11.jpg" alt="Imagen 11">
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <button id="openBtn">Ábreme</button>
+    </div>
+
+<!-- Tarjeta especial para mensaje personalizado -->
+<div class="modal" id="modalCard">
+  <div class="modal-content">
+    <h2>Para Eydie Yesel</h2>
+    
+    <p>Hola 😊, espero que estés teniendo un lindo día y que este mensaje te encuentre en un momento tranquilo y bonito.</p>
+    
+    <p>Hace un rato me puse a pensar en algo que pudiera hacerte feliz… y se me ocurrió escribirte esto desde el corazón ❤️. Ojalá te llegue como una pequeña brisa cálida y te arranque, por lo menos, una sonrisa 🥰.</p>
+    
+    <p>Quiero ser sincero, porque este mensaje va dedicado a alguien muy especial y hermoso como tú 🌟. La vida está llena de momentos: unos llenos de alegría, otros de tristeza, días de ilusión, de dudas, incluso de desilusión… pero todo eso forma parte del camino. Lo increíble es que, a pesar de todo, tú sigues adelante 💪, con una fuerza admirable. Y eso… eso es algo que admiro profundamente 👏.</p>
+    
+    <p>Aunque apenas te conozco, me encanta tu forma de ser 💫. En persona solo te veía de lejos, nunca me atreví a acercarme 😅… pero un día, por casualidad, vi uno de tus lives 🎥… y sin quererlo, me regalaste una sonrisa en un momento difícil 🥺💫. Desde entonces, trato de no perderme ninguno, porque transmites algo muy bonito, auténtico, real 💖. Ojalá nunca dejes de hacer lo que haces, porque lo haces con el alma, y eso se nota 🤍✨.</p>
+    
+    <p>También quiero desearte lo mejor del mundo 🌈. Sé que estás estudiando Educación, y aunque no es fácil, tiene algo mágico: trabajar con niños 🧸, esos pequeños que muchas veces nos devuelven la esperanza con su ternura y sus palabras sinceras. Con tu dedicación, tu esfuerzo y esa humildad tan tuya… estoy seguro de que vas a lograr cosas increíbles 🚀. Te lo mereces totalmente 💯.</p>
+    
+    <p>Y algo más… Cuando sientas que no tienes con quién hablar 🤐, cuando te sientas sola o simplemente necesites desahogarte 💬😭… recuerda que aquí me tienes. Estoy dispuesto a escucharte, sin juzgar, solo siendo apoyo, un hombro virtual 🤝, alguien que de verdad te aprecia 💌.</p>
+    
+    <p>Para terminar, quiero dedicarte una canción que escribí hace algún tiempo 🎶. Habla sobre crecer, sobre aprender a levantarse cuando todo parece ir en contra, y de no dejar de luchar por lo que uno sueña 💭🔥.</p>
+    
+    <p>Es mi manera de decirte que nunca estás sola 🤍. Espero que te guste 🥳.</p>
+
+    <button id="listenBtn">Escuchar canción</button>
+    <button id="closeBtn">Cerrar</button>
+  </div>
+</div>
+
+  
+  <!-- Modal para escuchar la canción -->
+  <div class="modal" id="songModal">
+    <div class="modal-content">
+      <h2>Valiente</h2>
+      <iframe id="songIframe" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+      <button id="closeSongBtn">Cerrar</button>
+    </div>
+  </div>
+  
+
+    <script src="script.js"></script>
+    <script src="fireworks.js"></script>
+   
+</body>
+
+</html>
