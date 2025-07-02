@@ -117,8 +117,8 @@ const messages = [
   { text: 'Vamos. 🚀', delay: 91280 },
   { text: 'Tú puedes. 💫', delay: 93160 },
   { text: 'Siempre puedes. 🩵', delay: 95080 },
-  { text: 'Y si alguna vez se te olvida... 😿', delay: 97000 },
-  { text: 'aquí estaré para recordártelo. 🧸💙', delay: 98440 },
+  { text: 'Y si alguna vez se te olvida... 😿', delay: 96800 },
+  { text: 'aquí estaré para recordártelo. 🧸💙', delay: 98040 },
   { text: 'Gracias por ser tal como eres, no vayas a cambiar. 🌟🥰', delay: 103260 }
 ];
 
