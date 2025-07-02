@@ -1,3 +1,82 @@
+// ===== SISTEMA DE CARGA =====
+// Mensajes románticos aleatorios para la pantalla de carga
+const mensajesRomanticos = [
+  "Linda", "Aroma", "Loca", "Bonita", "Hermosa", "Preciosa", 
+  "Dulce", "Bella", "Amor", "Corazón", "Tesoro", "Princesa",
+  "Ángel", "Cielo", "Vida", "Estrella", "Luna", "Sol"
+];
+
+// Variables globales para el sistema de carga
+let messageInterval;
+let loadingComplete = false;
+
+// Función para mostrar mensajes aleatorios durante la carga
+function mostrarMensajeAleatorio() {
+  const randomMessage = document.getElementById('random-message');
+  const mensajeAleatorio = mensajesRomanticos[Math.floor(Math.random() * mensajesRomanticos.length)];
+  
+  // Efecto de desvanecimiento
+  randomMessage.style.opacity = '0';
+  
+  setTimeout(() => {
+    randomMessage.textContent = mensajeAleatorio;
+    randomMessage.style.opacity = '1';
+  }, 300);
+}
+
+// Función para iniciar la carga
+function iniciarCarga() {
+  const loadingScreen = document.getElementById('loading-screen');
+  const mainContent = document.getElementById('main-content');
+  const modelViewer = document.getElementById('visor');
+  
+  // Mostrar mensajes aleatorios cada 2 segundos
+  messageInterval = setInterval(mostrarMensajeAleatorio, 2000);
+  
+  // Escuchar cuando el modelo se haya cargado
+  modelViewer.addEventListener('load', () => {
+    // Manejar animaciones del modelo cuando se carga
+    const animations = modelViewer.availableAnimations;
+    if (animations.length > 0) {
+      modelViewer.animationName = animations[0]; // Play the first animation
+    }
+    
+    // Simular un tiempo mínimo de carga para mostrar el video (3 segundos mínimo)
+    setTimeout(() => {
+      finalizarCarga();
+    }, 3000);
+  });
+  
+  // Fallback: si el modelo no se carga en 10 segundos, mostrar de todas formas
+  setTimeout(() => {
+    if (!loadingComplete) {
+      finalizarCarga();
+    }
+  }, 10000);
+}
+
+// Función para finalizar la carga
+function finalizarCarga() {
+  if (loadingComplete) return;
+  
+  loadingComplete = true;
+  const loadingScreen = document.getElementById('loading-screen');
+  const mainContent = document.getElementById('main-content');
+  
+  // Detener el intervalo de mensajes
+  clearInterval(messageInterval);
+  
+  // Ocultar pantalla de carga con efecto fade
+  loadingScreen.classList.add('fade-out');
+  
+  // Mostrar contenido principal después del fade
+  setTimeout(() => {
+    loadingScreen.style.display = 'none';
+    mainContent.classList.remove('hidden');
+  }, 1000);
+}
+
+// ===== CÓDIGO ORIGINAL DEL SISTEMA DE MENSAJES =====
 let isPlaying = false;
 const password = '0'; // Replace with your desired password
 let currentIndex = 0;
@@ -43,12 +122,12 @@ const messages = [
   { text: 'Porque creo en ti con todo mi corazón', delay: 111260 }
 ];
 
-
+// Event listener para el botón principal
 document.getElementById('toggleMensaje').addEventListener('click', () => {
   const speechBubble = document.getElementById('speech-bubble');
   const button = document.getElementById('toggleMensaje');
   const audio = document.getElementById('backgroundAudio');
-
+  
   if (!isPlaying) {
     // Prompt for password
     const input = prompt('Ingresa la contraseña:');
@@ -58,14 +137,14 @@ document.getElementById('toggleMensaje').addEventListener('click', () => {
     } else if (input === null) {
       return; // User cancelled prompt
     }
-
+    
     // Start audio and unmute
     audio.muted = false;
     audio.play().catch(err => console.log('Audio playback failed:', err));
-
+    
     // Start message sequence
     isPlaying = true;
-    button.textContent = 'Detener Mensajes';
+    button.innerHTML = '<span>Detener</span>';
     currentIndex = 0;
     showNextMessage(speechBubble);
   } else {
@@ -79,24 +158,25 @@ document.getElementById('toggleMensaje').addEventListener('click', () => {
     audio.muted = true;
     isPlaying = false;
     currentIndex = 0;
-    button.textContent = 'Iniciar Mensajes';
+    button.innerHTML = '<span>Presiona<br>aquí</span>';
   }
 });
 
 function showNextMessage(speechBubble) {
   if (currentIndex >= messages.length) {
-    document.getElementById('toggleMensaje').textContent = 'Reiniciar Mensajes';
+    document.getElementById('toggleMensaje').innerHTML = '<span>Reiniciar<br>Mensajes</span>';
+    isPlaying = false;
     return;
   }
-
+  
   // Fade out current message
   speechBubble.classList.remove('visible');
-
+  
   setTimeout(() => {
     // Update content and fade in
     speechBubble.textContent = messages[currentIndex].text;
     speechBubble.classList.add('visible');
-
+    
     // Schedule next message
     currentIndex++;
     if (currentIndex < messages.length) {
@@ -104,16 +184,53 @@ function showNextMessage(speechBubble) {
       const timeout = setTimeout(() => showNextMessage(speechBubble), nextDelay);
       timeouts.push(timeout);
     } else {
-      document.getElementById('toggleMensaje').textContent = 'Reiniciar Mensajes';
+      // Cuando terminen todos los mensajes
+      setTimeout(() => {
+        document.getElementById('toggleMensaje').innerHTML = '<span>Reiniciar<br>Mensajes</span>';
+        isPlaying = false;
+      }, 3000);
     }
   }, 500); // Wait for fade-out before showing next
 }
 
-// Handle animations for model-viewer
-const modelViewer = document.getElementById('visor');
-modelViewer.addEventListener('load', () => {
-  const animations = modelViewer.availableAnimations;
-  if (animations.length > 0) {
-    modelViewer.animationName = animations[0]; // Play the first animation
+// ===== INICIALIZACIÓN =====
+// Manejar el video de carga y inicializar todo
+document.addEventListener('DOMContentLoaded', () => {
+  const loadingVideo = document.getElementById('loading-video');
+  
+  // Si el video no se puede cargar, mostrar el spinner
+  if (loadingVideo) {
+    loadingVideo.addEventListener('error', () => {
+      loadingVideo.style.display = 'none';
+      const spinner = document.querySelector('.loading-fallback');
+      if (spinner) {
+        spinner.style.display = 'flex';
+      }
+    });
+  }
+  
+  // Iniciar el proceso de carga
+  iniciarCarga();
+});
+
+// Función adicional para manejar errores del modelo
+document.getElementById('visor').addEventListener('error', (event) => {
+  console.log('Error cargando el modelo:', event);
+  // Aun con error, finalizar la carga después de un tiempo
+  setTimeout(() => {
+    if (!loadingComplete) {
+      finalizarCarga();
+    }
+  }, 3000);
+});
+
+// Manejar el caso cuando no hay pantalla de carga (fallback)
+window.addEventListener('load', () => {
+  // Si por alguna razón no existe la pantalla de carga, mostrar el contenido directamente
+  const loadingScreen = document.getElementById('loading-screen');
+  const mainContent = document.getElementById('main-content');
+  
+  if (!loadingScreen && mainContent) {
+    mainContent.classList.remove('hidden');
   }
 });
