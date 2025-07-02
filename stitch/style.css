@@ -6,10 +6,72 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #87ceeb 50%, #b0e0e6 75%, #f0f8ff 100%);
   position: relative;
   overflow-x: hidden;
+  animation: backgroundShift 15s ease-in-out infinite;
+}
+
+/* Animación sutil del fondo */
+@keyframes backgroundShift {
+  0%, 100% { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #87ceeb 50%, #b0e0e6 75%, #f0f8ff 100%); }
+  50% { background: linear-gradient(135deg, #2a5298 0%, #4682b4 25%, #87ceeb 50%, #add8e6 75%, #e6f3ff 100%); }
+}
+
+/* Corazones flotantes */
+.heart {
+  position: absolute;
+  color: rgba(30, 144, 255, 0.7);
+  font-size: 20px;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 16px; }
+.heart:nth-child(2) { left: 20%; animation-delay: 1s; font-size: 24px; }
+.heart:nth-child(3) { left: 30%; animation-delay: 2s; font-size: 18px; }
+.heart:nth-child(4) { left: 40%; animation-delay: 3s; font-size: 22px; }
+.heart:nth-child(5) { left: 50%; animation-delay: 4s; font-size: 20px; }
+.heart:nth-child(6) { left: 60%; animation-delay: 5s; font-size: 26px; }
+.heart:nth-child(7) { left: 70%; animation-delay: 1.5s; font-size: 17px; }
+.heart:nth-child(8) { left: 80%; animation-delay: 2.5s; font-size: 23px; }
+.heart:nth-child(9) { left: 90%; animation-delay: 3.5s; font-size: 19px; }
+.heart:nth-child(10) { left: 15%; animation-delay: 6s; font-size: 21px; }
+.heart:nth-child(11) { left: 35%; animation-delay: 7s; font-size: 25px; }
+.heart:nth-child(12) { left: 55%; animation-delay: 0.5s; font-size: 18px; }
+.heart:nth-child(13) { left: 75%; animation-delay: 4.5s; font-size: 22px; }
+.heart:nth-child(14) { left: 85%; animation-delay: 6.5s; font-size: 20px; }
+.heart:nth-child(15) { left: 25%; animation-delay: 1.8s; font-size: 24px; }
+
+@keyframes float {
+  0% {
+    top: 100vh;
+    opacity: 0;
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  20% {
+    transform: translateY(-20px) rotate(10deg) scale(1.1);
+  }
+  40% {
+    transform: translateY(-40px) rotate(-5deg) scale(0.9);
+  }
+  60% {
+    transform: translateY(-60px) rotate(15deg) scale(1.2);
+  }
+  80% {
+    transform: translateY(-80px) rotate(-10deg) scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    top: -100px;
+    opacity: 0;
+    transform: translateY(-100px) rotate(20deg) scale(0.5);
+  }
 }
 
 model-viewer {
@@ -18,61 +80,93 @@ model-viewer {
   height: 50vh;
   min-height: 300px;
   margin: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 144, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 #speech-bubble {
   position: absolute;
-  top: 20%; /* Position above the model */
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.9));
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 144, 255, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1);
   font-size: 1.2rem;
-  line-height: 1.5;
-  max-width: 300px;
+  line-height: 1.6;
+  max-width: 350px;
   width: 80%;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: all 0.5s ease;
   z-index: 2;
+  color: #2c3e50;
+  font-weight: 500;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(30, 144, 255, 0.2);
 }
 
 /* Speech bubble tail pointing to the model */
 #speech-bubble::after {
   content: '';
   position: absolute;
-  bottom: -20px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
-  border: 10px solid transparent;
-  border-top-color: white;
+  border: 15px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0 2px 4px rgba(30, 144, 255, 0.1));
 }
 
 #speech-bubble.visible {
   opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
 }
 
 #toggleMensaje {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #007bff;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(145deg, #1e90ff, #4169e1);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 8px 24px rgba(30, 144, 255, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  margin-top: 20px;
+  text-align: center;
+  line-height: 1.2;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+#toggleMensaje span {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
 }
 
 #toggleMensaje:hover {
-  background-color: #0056b3;
+  background: linear-gradient(145deg, #4169e1, #6495ed);
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 12px 32px rgba(30, 144, 255, 0.5), 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+#toggleMensaje:active {
+  transform: translateX(-50%) scale(1.05);
 }
 
 /* Responsive adjustments */
@@ -80,44 +174,29 @@ model-viewer {
   model-viewer {
     height: 40vh;
     min-height: 200px;
+    border-radius: 15px;
   }
 
   #speech-bubble {
     top: 15%;
     font-size: 1rem;
-    padding: 10px;
-    max-width: 250px;
+    padding: 15px;
+    max-width: 280px;
+    border-radius: 15px;
   }
 
   #toggleMensaje {
-    font-size: 0.9rem;
-    padding: 8px 16px;
+    width: 100px;
+    height: 100px;
+    font-size: 12px;
+    bottom: 30px;
   }
-}
 
-#toggleMensaje {
-  width: 100px;
-  height: 100px;
-  background-color: #1e90ff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  text-align: center;
-  line-height: 100px;
-  padding: 0;
-}
-
-#toggleMensaje:hover {
-  background-color: #0078d7;
-  transform: translateX(-50%) scale(1.1);
+  .heart {
+    font-size: 16px;
+  }
+  
+  .heart:nth-child(even) {
+    font-size: 14px;
+  }
 }
