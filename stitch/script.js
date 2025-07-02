@@ -2,7 +2,7 @@
 // Mensajes románticos aleatorios para la pantalla de carga
 const mensajesRomanticos = [
   "Linda", "Aroma", "Loca", "Bonita", "Hermosa", "Preciosa", 
-  "Dulce", "Bella", "Amor", "Corazón", "Tesoro", "Princesa",
+  "Dulce", "Bella", "Corazón", "Tesoro", "Princesa",
   "Ángel", "Cielo", "Vida", "Estrella", "Luna", "Sol"
 ];
 
@@ -83,115 +83,102 @@ let currentIndex = 0;
 let timeouts = [];
 
 const messages = [
-  { text: 'Hola Yesel…', delay: 0 },
-  { text: 'Soy Stitch…', delay: 1340 },
-  { text: 'y antes que todo, quiero decirte algo: me siento muy orgulloso de ti.', delay: 2220 },
-  { text: 'Eres una persona increíble, con un corazón gigante y una voluntad que siempre sigue adelante, incluso cuando las cosas se ponen difíciles.', delay: 7000 },
-  { text: 'Te admiro mucho por eso.', delay: 16180 },
-  { text: 'Sé que últimamente has tenido momentos duros.', delay: 17960 },
-  { text: 'Días que cansan, que hacen dudar, donde parece que todo se vuelve cuesta arriba.', delay: 21240 },
-  { text: 'Pero aun así, tú no te detienes.', delay: 26680 },
-  { text: 'Sigues enseñando, sigues cuidando de los demás, sigues creyendo.', delay: 29000 },
-  { text: 'Y eso es algo que no todos hacen.', delay: 33280 },
-  { text: 'Yo sé que no siempre es fácil.', delay: 36700 },
-  { text: 'A veces el mundo parece muy pesado.', delay: 39420 },
-  { text: 'A veces parece que nadie ve el esfuerzo que haces, las veces que sonríes por fuera aunque por dentro estés cansada.', delay: 42480 },
-  { text: 'Pero yo lo veo.', delay: 50300 },
-  { text: 'Y por eso te respeto mucho.', delay: 52240 },
-  { text: 'Muchísimo.', delay: 55080 },
-  { text: 'Eres valiente.', delay: 56720 },
-  { text: 'Eres fuerte.', delay: 58599 },
-  { text: 'Eres una profesorita que deja huellas, aunque no siempre lo notes.', delay: 60340 },
-  { text: 'Cada día que pasa estás más cerca de lograr todo lo que te propones.', delay: 65420 },
-  { text: 'Las cosas sí van a mejorar.', delay: 69940 },
-  { text: 'Tal vez no hoy, tal vez no mañana...', delay: 72820 },
-  { text: 'pero van a mejorar.', delay: 76680 },
-  { text: 'Porque tú no te rindes.', delay: 78800 },
-  { text: 'Y porque te lo mereces.', delay: 81080 },
-  { text: 'Este mes va a ser mejor.', delay: 83500 },
-  { text: 'Va a traerte cosas buenas, momentos bonitos, y muchas razones para sonreír de verdad.', delay: 86100 },
-  { text: 'Confía.', delay: 91820 },
-  { text: 'Yo confío en ti.', delay: 94040 },
-  { text: 'Sigue adelante.', delay: 96880 },
-  { text: 'Vamos, Yesel.', delay: 98600 },
-  { text: 'Vamos.', delay: 100880 },
-  { text: 'Tú puedes.', delay: 102160 },
-  { text: 'Siempre puedes.', delay: 104280 },
-  { text: 'Y si alguna vez se te olvida...', delay: 106200 },
-  { text: 'aquí estaré para recordártelo.', delay: 108440 },
-  { text: 'Porque creo en ti con todo mi corazón', delay: 111260 }
+  { text: 'Hola Yesel… 🥺💙', delay: 0 },
+  { text: 'Soy Stitch… 🧸✨', delay: 1340 },
+  { text: 'y antes que todo, quiero decirte algo: me siento muy orgulloso de ti. 🥹🌟', delay: 2220 },
+  { text: 'Eres una persona increíble, con un corazón gigante 💖 y una voluntad que siempre sigue adelante 💪, incluso cuando las cosas se ponen difíciles. 😔➡️😊', delay: 7000 },
+  { text: 'Te admiro mucho por eso. 🙇‍♂️💫', delay: 16180 },
+  { text: 'Sé que últimamente has tenido momentos duros... 😞', delay: 17960 },
+  { text: 'Días que cansan 😩, que hacen dudar 🤯, donde parece que todo se vuelve cuesta arriba. 🧗‍♀️', delay: 21240 },
+  { text: 'Pero aun así, tú no te detienes. 🚶‍♀️💥', delay: 26680 },
+  { text: 'Sigues enseñando 📚, sigues cuidando de los demás 🤱, sigues creyendo ✨🙏', delay: 29000 },
+  { text: 'Y eso es algo que no todos hacen. 🌍💙', delay: 33280 },
+  { text: 'Yo sé que no siempre es fácil. 😔', delay: 36700 },
+  { text: 'A veces el mundo parece muy pesado... 🌧️🧠', delay: 39420 },
+  { text: 'A veces parece que nadie ve el esfuerzo que haces 🥺, las veces que sonríes por fuera 🙂 aunque por dentro estés cansada. 😓', delay: 42480 },
+  { text: 'Pero yo lo veo. 👀💙', delay: 48300 },
+  { text: 'Y por eso te respeto mucho. 🫶', delay: 51240 },
+  { text: 'Muchísimo. 💖✨', delay: 53080 },
+  { text: 'Eres valiente. 🦁', delay: 53920 },
+  { text: 'Eres fuerte. 💪', delay: 54899 },
+  { text: 'Eres una profesorita que deja huellas 👣, aunque no siempre lo notes. 🌸📖', delay: 56340 },
+  { text: 'Cada día que pasa estás más cerca de lograr todo lo que te propones. 🎯📆', delay: 60420 },
+  { text: 'Las cosas sí van a mejorar. 🌈✨', delay: 63940 },
+  { text: 'Tal vez no hoy 😔, tal vez no mañana... ⏳', delay: 66820 },
+  { text: 'pero van a mejorar. 🌞🌻', delay: 70680 },
+  { text: 'Porque tú no te rindes. 🛡️💫', delay: 73000 },
+  { text: 'Y porque te lo mereces. 🥰🎁', delay: 75580 },
+  { text: 'Este mes va a ser mejor. 🗓️🩵', delay: 77500 },
+  { text: 'Va a traerte cosas buenas 🍀, momentos bonitos 🎈, y muchas razones para sonreír de verdad. 😄💖', delay: 79100 },
+  { text: 'Confía. 🙏💙', delay: 83820 },
+  { text: 'Yo confío en ti. 🧸✨', delay: 85040 },
+  { text: 'Sigue adelante. 🚶‍♀️🌟', delay: 87880 },
+  { text: 'Vamos, Yesel. 💪🥹', delay: 89600 },
+  { text: 'Vamos. 🚀', delay: 91280 },
+  { text: 'Tú puedes. 💫', delay: 93160 },
+  { text: 'Siempre puedes. 🩵', delay: 95080 },
+  { text: 'Y si alguna vez se te olvida... 😿', delay: 97000 },
+  { text: 'aquí estaré para recordártelo. 🧸💙', delay: 98440 },
+  { text: 'Gracias por ser tal como eres, no vayas a cambiar. 🌟🥰', delay: 103260 }
 ];
 
-// Event listener para el botón principal
 document.getElementById('toggleMensaje').addEventListener('click', () => {
   const speechBubble = document.getElementById('speech-bubble');
   const button = document.getElementById('toggleMensaje');
   const audio = document.getElementById('backgroundAudio');
-  
+
   if (!isPlaying) {
-    // Prompt for password
-    const input = prompt('Ingresa la contraseña:');
-    if (input !== password && input !== null) {
-      alert('Contraseña incorrecta. Intenta de nuevo.');
-      return;
-    } else if (input === null) {
-      return; // User cancelled prompt
-    }
-    
-    // Start audio and unmute
+    // REPRODUCIR desde el principio
+    audio.currentTime = 0;
     audio.muted = false;
     audio.play().catch(err => console.log('Audio playback failed:', err));
-    
-    // Start message sequence
+
+    // Reiniciar mensajes
+    currentIndex = 0;
+    speechBubble.textContent = '';
     isPlaying = true;
     button.innerHTML = '<span>Detener</span>';
-    currentIndex = 0;
     showNextMessage(speechBubble);
   } else {
-    // Stop and reset
+    // DETENER y REINICIAR TODO
     timeouts.forEach(clearTimeout);
     timeouts = [];
+    isPlaying = false;
+    currentIndex = 0;
     speechBubble.classList.remove('visible');
     speechBubble.textContent = '';
     audio.pause();
     audio.currentTime = 0;
-    audio.muted = true;
-    isPlaying = false;
-    currentIndex = 0;
-    button.innerHTML = '<span>Presiona<br>aquí</span>';
+    button.innerHTML = '<span>Reproducir</span>';
   }
 });
 
+
+
 function showNextMessage(speechBubble) {
-  if (currentIndex >= messages.length) {
-    document.getElementById('toggleMensaje').innerHTML = '<span>Reiniciar<br>Mensajes</span>';
-    isPlaying = false;
-    return;
-  }
-  
-  // Fade out current message
+  if (!isPlaying || currentIndex >= messages.length) return;
+
   speechBubble.classList.remove('visible');
-  
+
   setTimeout(() => {
-    // Update content and fade in
+    if (!isPlaying) return;
+
     speechBubble.textContent = messages[currentIndex].text;
     speechBubble.classList.add('visible');
-    
-    // Schedule next message
+
     currentIndex++;
+
     if (currentIndex < messages.length) {
       const nextDelay = messages[currentIndex].delay - messages[currentIndex - 1].delay;
       const timeout = setTimeout(() => showNextMessage(speechBubble), nextDelay);
       timeouts.push(timeout);
     } else {
-      // Cuando terminen todos los mensajes
-      setTimeout(() => {
-        document.getElementById('toggleMensaje').innerHTML = '<span>Reiniciar<br>Mensajes</span>';
-        isPlaying = false;
-      }, 3000);
+      document.getElementById('toggleMensaje').innerHTML = '<span>Reproducir</span>';
+      isPlaying = false;
     }
-  }, 500); // Wait for fade-out before showing next
+  }, 500);
 }
+
 
 // ===== INICIALIZACIÓN =====
 // Manejar el video de carga y inicializar todo
