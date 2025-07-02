@@ -44,7 +44,7 @@ function iniciarCarga() {
     // Simular un tiempo mínimo de carga para mostrar el video (3 segundos mínimo)
     setTimeout(() => {
       finalizarCarga();
-    }, 5000);
+    }, 3000);
   });
   
   // Fallback: si el modelo no se carga en 10 segundos, mostrar de todas formas
@@ -74,9 +74,10 @@ function finalizarCarga() {
 
   setTimeout(() => {
     loadingScreen.style.display = 'none';
-    mainContent.classList.add('visible');
+    mainContent.classList.remove('hidden');
   }, 1000);
 }
+
 
 // ===== CÓDIGO ORIGINAL DEL SISTEMA DE MENSAJES =====
 let isPlaying = false;
@@ -155,6 +156,8 @@ document.getElementById('toggleMensaje').addEventListener('click', () => {
   }
 });
 
+
+
 function showNextMessage(speechBubble) {
   if (!isPlaying || currentIndex >= messages.length) return;
 
@@ -178,6 +181,7 @@ function showNextMessage(speechBubble) {
     }
   }, 500);
 }
+
 
 // ===== INICIALIZACIÓN =====
 // Manejar el video de carga y inicializar todo
@@ -217,6 +221,6 @@ window.addEventListener('load', () => {
   const mainContent = document.getElementById('main-content');
   
   if (!loadingScreen && mainContent) {
-    mainContent.classList.add('visible');
+    mainContent.classList.remove('hidden');
   }
 });
