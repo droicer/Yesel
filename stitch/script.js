@@ -1,11 +1,11 @@
 // ===== SISTEMA DE CARGA =====
-// Mensajes románticos aleatorios para la pantalla de carga
+// Mensajes amistosos y respetuosos para la pantalla de carga
 const mensajesRomanticos = [
-  "Linda", "Aroma", "Loca", "Bonita", "Hermosa", "Preciosa", 
-  "Dulce", "Bella", "Corazón", "Tesoro", "Princesa",
-  "Ángel", "Cielo", "Vida", "Estrella", "Luna", "Sol"
+  "Linda", "Aroma", "Loca", "Bonita", "Pequeña", 
+  "Valiente", "Brillante", "Tierna", "Creativa", "Especial",
+  "Luz", "Chispa", "Inspiradora", "Soñadora", "Fuerte", 
+  "Única", "Sabia"
 ];
-
 // Variables globales para el sistema de carga
 let messageInterval;
 let loadingComplete = false;
@@ -55,26 +55,29 @@ function iniciarCarga() {
   }, 10000);
 }
 
-// Función para finalizar la carga
 function finalizarCarga() {
   if (loadingComplete) return;
-  
+
   loadingComplete = true;
   const loadingScreen = document.getElementById('loading-screen');
   const mainContent = document.getElementById('main-content');
-  
-  // Detener el intervalo de mensajes
+  const loadingVideo = document.getElementById('loading-video');
+
+  // ⏸️ Pausar el video de carga si existe
+  if (loadingVideo && !loadingVideo.paused) {
+    loadingVideo.pause();
+    loadingVideo.currentTime = 0; // Opcional: reiniciar desde el inicio
+  }
+
   clearInterval(messageInterval);
-  
-  // Ocultar pantalla de carga con efecto fade
   loadingScreen.classList.add('fade-out');
-  
-  // Mostrar contenido principal después del fade
+
   setTimeout(() => {
     loadingScreen.style.display = 'none';
     mainContent.classList.remove('hidden');
   }, 1000);
 }
+
 
 // ===== CÓDIGO ORIGINAL DEL SISTEMA DE MENSAJES =====
 let isPlaying = false;
@@ -98,7 +101,7 @@ const messages = [
   { text: 'A veces parece que nadie ve el esfuerzo que haces 🥺, las veces que sonríes por fuera 🙂 aunque por dentro estés cansada. 😓', delay: 42480 },
   { text: 'Pero yo lo veo. 👀💙', delay: 48300 },
   { text: 'Y por eso te respeto mucho. 🫶', delay: 51240 },
-  { text: 'Muchísimo. 💖✨', delay: 53080 },
+  { text: 'Muchísimo. ✨', delay: 53080 },
   { text: 'Eres valiente. 🦁', delay: 53920 },
   { text: 'Eres fuerte. 💪', delay: 54899 },
   { text: 'Eres una profesorita que deja huellas 👣, aunque no siempre lo notes. 🌸📖', delay: 56340 },
@@ -107,9 +110,9 @@ const messages = [
   { text: 'Tal vez no hoy 😔, tal vez no mañana... ⏳', delay: 66820 },
   { text: 'pero van a mejorar. 🌞🌻', delay: 70680 },
   { text: 'Porque tú no te rindes. 🛡️💫', delay: 73000 },
-  { text: 'Y porque te lo mereces. 🥰🎁', delay: 75580 },
+  { text: 'Y porque te lo mereces. 🎁', delay: 75580 },
   { text: 'Este mes va a ser mejor. 🗓️🩵', delay: 77500 },
-  { text: 'Va a traerte cosas buenas 🍀, momentos bonitos 🎈, y muchas razones para sonreír de verdad. 😄💖', delay: 79100 },
+  { text: 'Va a traerte cosas buenas 🍀, momentos bonitos 🎈, y muchas razones para sonreír de verdad. 😄', delay: 79100 },
   { text: 'Confía. 🙏💙', delay: 83820 },
   { text: 'Yo confío en ti. 🧸✨', delay: 85040 },
   { text: 'Sigue adelante. 🚶‍♀️🌟', delay: 87880 },
@@ -119,7 +122,7 @@ const messages = [
   { text: 'Siempre puedes. 🩵', delay: 95080 },
   { text: 'Y si alguna vez se te olvida... 😿', delay: 96800 },
   { text: 'aquí estaré para recordártelo. 🧸💙', delay: 98040 },
-  { text: 'Gracias por ser tal como eres, no vayas a cambiar. 🌟🥰', delay: 103260 }
+  { text: 'Gracias por ser tal como eres, no vayas a cambiar. 🌟', delay: 103260 }
 ];
 
 document.getElementById('toggleMensaje').addEventListener('click', () => {
