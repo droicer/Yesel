@@ -1,11 +1,12 @@
 // ===== SISTEMA DE CARGA =====
-// Mensajes amistosos y respetuosos para la pantalla de carga
+// Mensajes románticos aleatorios para la pantalla de carga
 const mensajesRomanticos = [
   "Linda", "Aroma", "Loca", "Bonita", "Pequeña", 
   "Valiente", "Brillante", "Tierna", "Creativa", "Especial",
   "Luz", "Chispa", "Inspiradora", "Soñadora", "Fuerte", 
   "Única", "Sabia"
 ];
+
 // Variables globales para el sistema de carga
 let messageInterval;
 let loadingComplete = false;
